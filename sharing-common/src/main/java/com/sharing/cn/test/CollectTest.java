@@ -120,5 +120,29 @@ public class CollectTest {
         System.out.println(i);
     }
 
+    @Test
+    public void distinct() {
+        List<BaseDataBo> list = new ArrayList<>();
+        BaseDataBo bo = new BaseDataBo();
+        bo.setId(0);
+        bo.setIsDelete(1);
+        BaseDataBo bo1 = new BaseDataBo();
+        bo1.setId(1);
+        bo1.setIsDelete(1);
+        BaseDataBo bo2 = new BaseDataBo();
+        bo2.setId(2);
+        bo2.setIsDelete(2);
+
+        list.add(bo);
+        list.add(bo1);
+        list.add(bo2);
+
+        ArrayList<BaseDataBo> collect = list.stream()
+                .collect(Collectors.collectingAndThen(
+                        Collectors.toCollection(
+                                () -> new TreeSet<>(Comparator.comparing(BaseDataBo::getIsDelete))), ArrayList::new));
+
+        System.out.println(collect.size());
+    }
 
 }
