@@ -40,6 +40,8 @@ public class UrlTest {
         BaseDataBo baseDataBo = new BaseDataBo();
         UrlUtils.urlToObject(url, baseDataBo);
         log.info(JSON.toJSONString(baseDataBo));
+        String s = UrlUtils.dataToUrl(baseDataBo);
+        System.out.println("http://www.runoob.com/html/html-tutorial.html" + s);
     }
 
 }

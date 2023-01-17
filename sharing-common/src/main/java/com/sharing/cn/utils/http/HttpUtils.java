@@ -142,6 +142,12 @@ public class HttpUtils {
         return result.toString();
     }
 
+    /**
+     * https post
+     * @param url
+     * @param param
+     * @return
+     */
     public static String sendSSLPost(String url, String param) {
         StringBuilder result = new StringBuilder();
         String urlNameString = url + "?" + param;

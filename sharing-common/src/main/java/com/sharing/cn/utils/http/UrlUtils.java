@@ -1,5 +1,8 @@
 package com.sharing.cn.utils.http;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import com.sharing.cn.utils.DateUtils;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -7,6 +10,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.thymeleaf.util.MapUtils;
 
 import java.beans.PropertyDescriptor;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
@@ -114,6 +119,17 @@ public class UrlUtils {
         return object;
     }
 
+    public static String dataToUrl(Object object) {
+        HashMap<String, Object> hashMap = JSON.parseObject(JSON.toJSONString(object), new TypeReference<HashMap<String, Object>>() {
+        });
+        StringBuilder stringBuilder = new StringBuilder("?");
+        for (String s : hashMap.keySet()) {
+            if (null != hashMap.get(s)) {
+                stringBuilder.append(s).append("=").append(hashMap.get(s)).append("&");
+            }
+        }
+        return stringBuilder.toString();
+    }
 
 
 }
