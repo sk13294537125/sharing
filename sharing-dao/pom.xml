@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>com.sharing.cn</groupId>
-            <artifactId>sharing-domain</artifactId>
+            <artifactId>sharing-common</artifactId>
             <version>0.0.1</version>
         </dependency>
     </dependencies>

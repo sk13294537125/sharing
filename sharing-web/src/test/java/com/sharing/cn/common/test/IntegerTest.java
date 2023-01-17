@@ -1,4 +1,4 @@
-package com.sharing.cn.test;
+package com.sharing.cn.common.test;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;

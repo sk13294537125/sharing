@@ -14,11 +14,6 @@
     <name>sharing-domain</name>
 
     <dependencies>
-        <dependency>
-            <groupId>com.sharing.cn</groupId>
-            <artifactId>sharing-common</artifactId>
-            <version>0.0.1</version>
-        </dependency>
     </dependencies>
 
 

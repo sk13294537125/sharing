@@ -60,7 +60,7 @@ public class MybatisPlusGenerator {
      * 执行Mybatis生成器
      */
     public static void main(String[] args) {
-        String projectPath = SystemUtils.getProperty(SystemUtils.userDir);
+        String projectPath = SystemUtils.getProperty(SystemUtils.USER_DIR);
         for (ProjectModuleEnum projectModule : ProjectModuleEnum.values()) {
             StringBuilder pathBuilder = new StringBuilder(projectPath);
             pathBuilder.append("/").append(projectName).append("-").append(projectModule.getName());

@@ -1,8 +1,6 @@
-package com.sharing.cn.test;
+package com.sharing.cn.common.test;
 
 import com.alibaba.fastjson.JSON;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -235,6 +233,16 @@ public class ThreadTest {
         //    System.out.println("异常");
         //}
         return true;
+    }
+
+    @Test
+    public void threadLocal() {
+        ThreadLocal sThreadLocal = new ThreadLocal();
+        sThreadLocal.set("a");
+        sThreadLocal.set("b");
+        String a = (String)sThreadLocal.get();
+        System.out.println(a);
+        System.exit(1);
     }
 
 }

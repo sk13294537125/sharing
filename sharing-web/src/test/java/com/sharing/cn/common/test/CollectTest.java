@@ -1,11 +1,10 @@
-package com.sharing.cn.test;
+package com.sharing.cn.common.test;
 
 import com.alibaba.fastjson.JSON;
-import com.sharing.cn.test.dto.BaseDataBo;
+import com.sharing.cn.domain.bo.BaseDataBo;
 import org.junit.Test;
 import org.springframework.util.CollectionUtils;
 
-import java.io.Serializable;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -144,5 +143,7 @@ public class CollectTest {
 
         System.out.println(collect.size());
     }
+
+
 
 }

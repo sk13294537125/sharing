@@ -1,7 +1,5 @@
-package com.sharing.cn.test.dto;
+package com.sharing.cn.common.test.dto;
 
-
-import org.apache.logging.log4j.util.PropertiesUtil;
 
 public class RequestVo {
 

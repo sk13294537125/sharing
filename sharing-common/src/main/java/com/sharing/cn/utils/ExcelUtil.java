@@ -1,7 +1,7 @@
 package com.sharing.cn.utils;
 
 
-import org.apache.commons.collections.CollectionUtils;
+import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.hssf.util.HSSFColor;

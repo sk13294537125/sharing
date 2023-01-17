@@ -1,10 +1,9 @@
-package com.sharing.cn.test;
+package com.sharing.cn.common.test;
 
 import cn.hutool.core.date.DateTime;
 import com.sharing.cn.utils.DateUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
-import org.springframework.util.Assert;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -115,5 +114,31 @@ public class DateTest {
         System.out.println(end);
         String s1 = DateUtils.date2Str(end, DateUtils.PATTERN_YYYY_MM_DD3);
         System.out.println(s1);
+    }
+
+    @Test
+    public void test4() {
+        //boolean verifyInterval = isVerifyInterval(new Date());
+        //System.out.println(verifyInterval);
+        String s = "2022-11-29 13:56:53";
+        Date endDate = DateUtils.addDays(DateUtils.strToDate(s), 90);
+        System.out.println(DateUtils.date2Str(endDate, DateUtils.DATE_LONG_FORMAT));
+        System.out.println(endDate.compareTo(new Date()) > 0);
+    }
+
+    private boolean isVerifyInterval(Date applyDate) {
+        String verifyInterval = "180";
+        Calendar applyTime = Calendar.getInstance();
+        applyTime.setTime(applyDate);
+        applyTime.add(Calendar.MINUTE, Integer.valueOf(verifyInterval));
+        Calendar nowTime = Calendar.getInstance();
+        System.out.println("applyTime:" + DateUtils.date2LongStr(applyTime.getTime()));
+        System.out.println("nowTime:" + DateUtils.date2LongStr(nowTime.getTime()));
+        nowTime.setTime(new Date());
+        if (nowTime.getTimeInMillis() >= applyTime.getTimeInMillis()) {
+            log.info("nowTime compare to true");
+            return true;
+        }
+        return false;
     }
 }

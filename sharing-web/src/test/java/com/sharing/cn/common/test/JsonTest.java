@@ -1,7 +1,7 @@
-package com.sharing.cn.test;
+package com.sharing.cn.common.test;
 
 import com.alibaba.fastjson.JSON;
-import com.sharing.cn.test.dto.*;
+import com.sharing.cn.common.test.dto.*;
 import org.junit.Test;
 
 import java.util.ArrayList;

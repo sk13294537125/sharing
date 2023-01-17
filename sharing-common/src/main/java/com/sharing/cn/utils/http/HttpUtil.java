@@ -1,5 +1,6 @@
 package com.sharing.cn.utils.http;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -27,6 +28,7 @@ import java.util.Map;
  *
  * @author ext.shikai1
  */
+@Slf4j
 public class HttpUtil {
 
     /**
@@ -39,8 +41,21 @@ public class HttpUtil {
         String result = null;
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpGet get = new HttpGet(url);
+        return get(get);
+    }
+
+    /**
+     * get请求，参数拼接在地址上
+     *
+     * @param get  特殊请求头
+     * @return 响应
+     */
+    public static String get(HttpGet get) {
+        String result = null;
+        CloseableHttpClient httpClient = HttpClients.createDefault();
         CloseableHttpResponse response = null;
         try {
+            log.info("请求地址：{}", get.getURI().getSchemeSpecificPart());
             response = httpClient.execute(get);
             if (response != null && response.getStatusLine().getStatusCode() == 200) {
                 HttpEntity entity = response.getEntity();

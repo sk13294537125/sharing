@@ -1,4 +1,4 @@
-package com.sharing.cn.test.dto;
+package com.sharing.cn.common.test.dto;
 
 import lombok.Data;
 

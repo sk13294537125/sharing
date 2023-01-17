@@ -47,6 +47,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
     public static final String PATTERN_YYYY_MM3 = "MMdd";
     public static final String PATTERN_YYYYMMDD = "yyyyMMdd";
     public static final String PATTERN_MMDD = "MMdd";
+    public static final String PATTERN_MMDD1 = "M/d";
     public static final String PATTERN_YYYY_MM_DD_2 = "yyyy.MM.dd";
     public static final String PATTERN_HH_MM_SS = "HHmmss";
     public static final String PATTERN_YYYY = "yyyy";
@@ -210,6 +211,11 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
         return dateTime;
     }
 
+    /**
+     * 当前时间转字符串
+     * @param format
+     * @return
+     */
     public static String dateToStr(String format) {
         SimpleDateFormat format1 = new SimpleDateFormat(format);
         return format1.format(new Date());

@@ -50,7 +50,7 @@ public class LogAspect {
     }
 
     @Order(1)
-    @Around("pointcutInterface() || pointcutPackage()")
+    @Around("pointcutInterface()")
     public Object doAroundAdvice(ProceedingJoinPoint joinPoint) throws Throwable {
         Map<String, String> mdc = MDC.getCopyOfContextMap();
         String key = joinPoint.getTarget().getClass().getSimpleName() + "#" + getMethodName(joinPoint) + "()";
