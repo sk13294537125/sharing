@@ -73,28 +73,6 @@ public class TimeOutUtils {
         //if ("2022-09-29".equals(format)) { return true; }
         //if ("2022-09-30".equals(format)) { return true; }
         //if ("2022-10-01".equals(format)) { return false; }
-        //if ("2022-10-02".equals(format)) { return false; }
-        //if ("2022-10-03".equals(format)) { return false; }
-        //if ("2022-10-04".equals(format)) { return false; }
-        //if ("2022-10-05".equals(format)) { return false; }
-        //if ("2022-10-06".equals(format)) { return false; }
-        //if ("2022-10-07".equals(format)) { return false; }
-        //if ("2022-10-08".equals(format)) { return true; }
-        //if ("2022-10-09".equals(format)) { return true; }
-        //if ("2022-10-10".equals(format)) { return true; }
-        //if ("2022-10-11".equals(format)) { return true; }
-        //if ("2022-10-12".equals(format)) { return true; }
-        //if ("2022-10-13".equals(format)) { return true; }
-        //if ("2022-10-14".equals(format)) { return true; }
-        //if ("2022-10-15".equals(format)) { return false; }
-        //if ("2022-10-16".equals(format)) { return false; }
-        //if ("2022-10-17".equals(format)) { return true; }
-        //if ("2022-10-18".equals(format)) { return true; }
-        //if ("2022-10-19".equals(format)) { return true; }
-        //if ("2022-10-20".equals(format)) { return true; }
-        //if ("2022-10-21".equals(format)) { return true; }
-        //if ("2022-10-22".equals(format)) { return false; }
-        //if ("2022-10-23".equals(format)) { return false; }
         //return true;
     }
 

@@ -1,8 +1,8 @@
 package com.sharing.cn.fm.dao.impl;
 
 //import com.sharing.cn.fm.dao.base.BaseDataBaseDao;
-import com.sharing.cn.fm.dao.intf.BaseDataDao;
-import org.springframework.stereotype.Repository;
+//import com.sharing.cn.fm.dao.intf.BaseDataDao;
+//import org.springframework.stereotype.Repository;
 
 /**
  * BaseDataDaoImpl: 数据操作接口实现

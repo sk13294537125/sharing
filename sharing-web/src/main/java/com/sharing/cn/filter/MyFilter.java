@@ -17,7 +17,7 @@ import java.util.List;
 @Slf4j
 public class MyFilter implements Filter {
 
-    public static List<String> FILTER_URLS = Lists.newArrayList("","");
+    public static List<String> FILTER_URLS = Lists.newArrayList("/index");
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -31,14 +31,16 @@ public class MyFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-        if (FILTER_URLS.contains(request.getRequestURI())) {
-            return;
-        }
-        String token = request.getHeader("token");
-        if (StringUtils.isNotBlank(token)) {
-            chain.doFilter(servletRequest, servletResponse);
-        }
+        chain.doFilter(servletRequest, servletResponse);
+        //HttpServletRequest request = (HttpServletRequest) servletRequest;
+        //if (FILTER_URLS.contains(request.getRequestURI())) {
+        //    chain.doFilter(servletRequest, servletResponse);
+        //    return;
+        //}
+        //String token = request.getHeader("token");
+        //if (StringUtils.isNotBlank(token)) {
+        //    chain.doFilter(servletRequest, servletResponse);
+        //}
 
 
     }

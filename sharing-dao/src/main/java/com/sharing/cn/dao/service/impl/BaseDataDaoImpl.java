@@ -17,4 +17,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class BaseDataDaoImpl extends ServiceImpl<BaseDataMapper, BaseData> implements BaseDataDao {
 
+    private final BaseDataMapper baseDataMapper;
+
+    public BaseDataDaoImpl(BaseDataMapper baseDataMapper) {
+        this.baseDataMapper = baseDataMapper;
+    }
 }

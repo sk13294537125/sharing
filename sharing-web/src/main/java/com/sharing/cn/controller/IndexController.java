@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * 页面跳转
  */
 @Controller
-@RequestMapping("/index")
+@RequestMapping
 public class IndexController {
 
-    @RequestMapping
+    @RequestMapping("/toIndex")
     public String index() {
         return "index";
     }

@@ -46,6 +46,7 @@ import java.util.List;
  *      <artifactId>mybatis-plus-extension</artifactId>
  *      <version>3.4.1</version>
  *  </dependency>
+ * @author ext.shikai1
  */
 @Slf4j
 public class MybatisPlusGenerator {
@@ -54,7 +55,7 @@ public class MybatisPlusGenerator {
     public static String projectName = "sharing";
 
     // 表名
-    public static String[] tableNameArray = {"operation_log"};
+    public static String[] tableNameArray = {"base_data_backup"};
 
     /**
      * 执行Mybatis生成器

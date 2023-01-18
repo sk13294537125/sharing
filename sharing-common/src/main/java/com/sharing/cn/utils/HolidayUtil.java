@@ -1,15 +1,15 @@
 package com.sharing.cn.utils;
 
+import com.sharing.cn.utils.http.HttpUtil;
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import java.util.Date;
 
 /**
  * @author ext.shikai1
  */
+@Slf4j
 public class HolidayUtil {
 
     public static final String WORKDAY = "0";
@@ -27,40 +27,22 @@ public class HolidayUtil {
         String result = null;
         StringBuffer sbf = new StringBuffer();
         httpUrl = httpUrl + "?d=" + httpArg;
-        try {
-            URL url = new URL(httpUrl);
-            HttpURLConnection connection = (HttpURLConnection) url
-                    .openConnection();
-            connection.setRequestMethod("GET");
-            connection.connect();
-            InputStream is = connection.getInputStream();
-            reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
-            String strRead = null;
-            while ((strRead = reader.readLine()) != null) {
-                sbf.append(strRead);
-            }
-            reader.close();
-            result = sbf.toString();
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }
-        return result;
+        return HttpUtil.get(httpUrl);
     }
 
     public static void main(String[] args) {
-        String jsonResult = HolidayUtil.queryHoliday("20221001");
+        String jsonResult = HolidayUtil.queryHoliday(DateUtils.date2Str(new Date(), DateUtils.PATTERN_YYYYMMDD));
         // 0 上班 1周末 2节假日
         if ("0".equals(jsonResult)) {
-            System.out.println("0上班日");
+            log.info("0上班日");
         }
 
         if ("1".equals(jsonResult)) {
-            System.out.println("1周末");
+            log.info("1周末");
         }
 
         if ("2".equals(jsonResult)) {
-            System.out.println("2节假日");
+            log.info("2节假日");
         }
     }
 }
