@@ -1,6 +1,7 @@
 package com.sharing.cn.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -10,8 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping
 public class IndexController {
 
-    @RequestMapping("/toIndex")
+    @GetMapping("/index")
     public String index() {
         return "index";
     }
+
+    @GetMapping("/head")
+    public String head() {
+        return "common/head";
+    }
+
 }

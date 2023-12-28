@@ -2,15 +2,13 @@ package com.sharing.cn.utils;
 
 
 import cn.hutool.core.date.DateTime;
+import com.sharing.cn.dto.DateDto;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneId;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
@@ -27,9 +25,9 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      */
     public static final ZoneId CHINA_ZONE = ZoneId.systemDefault();
     /**
-     * 
+     *
      */
-	public static final String DATE_LONG_FORMAT="yyyy-MM-dd HH:mm:ss";
+    public static final String DATE_LONG_FORMAT = "yyyy-MM-dd HH:mm:ss";
     public static final String DT_LONG = "yyyyMMddHHmmss";
     public static final String DT_LONG_2 = "yyMMddHHmmss";
     public static final String DT_LONG_3 = "yyMMdd";
@@ -53,14 +51,8 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
     public static final String PATTERN_YYYY = "yyyy";
     public static final String DT_LONG_MILLI = "yyyyMMddHHmmssSSS";
 
-	@Test
-    public void get() {
-        String stringTime = getStringTime(1629302400000L);
-        System.out.println(stringTime);
-    }
-
     /**
-     * @desc  时间戳转字符串
+     * @desc 时间戳转字符串
      * @example timestamp=1558322327000
      **/
     public static String getStringTime(Long timestamp) {
@@ -96,6 +88,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
         }
         return null;
     }
+
     /**
      * LocalDateTime 转 字符串
      *
@@ -112,7 +105,8 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 
     /**
      * date 转 字符串
-     * @param date   Date对象
+     *
+     * @param date Date对象
      * @return 字符串
      */
     public static String date2Str(Date date, String format) {
@@ -121,10 +115,11 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
         }
         return date2LocalDateTime(date).format(DateTimeFormatter.ofPattern(format));
     }
+
     /**
      * date 转 字符串
      *
-     * @param date   Date对象
+     * @param date Date对象
      * @return 字符串
      */
     public static String date2LongStr(Date date) {
@@ -133,6 +128,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
         }
         return date2LocalDateTime(date).format(DateTimeFormatter.ofPattern(DATE_LONG_FORMAT));
     }
+
     /**
      * 字符串 转 LocalDateTime
      *
@@ -151,7 +147,6 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
             return null;
         }
     }
-
 
     /**
      * 构造时分秒为0的LocalDateTime对象
@@ -184,7 +179,6 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
         return Optional.ofNullable(localDate).map(o -> Date.from(o.atStartOfDay(CHINA_ZONE).toInstant())).orElse(null);
     }
 
-
     /**
      * LocalDateTime 转换为 Date
      *
@@ -213,6 +207,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 
     /**
      * 当前时间转字符串
+     *
      * @param format
      * @return
      */
@@ -231,9 +226,9 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
         return c.getTime();
     }
 
-
     /**
      * 加 天
+     *
      * @param date
      * @param day
      * @return
@@ -246,10 +241,10 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
     }
 
     /**
+     * @param date 传入日期
+     * @return Date    返回类型
      * @Title: parseStart
      * @Description: 获取当前日期的零时零分零秒（yyyy-MM-dd 00:00:00）
-     * @param  date 传入日期
-     * @return Date    返回类型
      */
     public static Date parseStart(String date) {
         if (StringUtils.isBlank(date)) {
@@ -268,11 +263,11 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
     }
 
     /**
+     * @param date1 日期1
+     * @param date2 日期2
+     * @return int    返回类型 1:date1大于date2, -1：date1小于date2, 0:date1等于date2
      * @Title: compareDate
      * @Description: 比较两个日期大小
-     * @param  date1 日期1
-     * @param  date2 日期2
-     * @return int    返回类型 1:date1大于date2, -1：date1小于date2, 0:date1等于date2
      */
     public static int compareDate(Date date1, Date date2) {
         try {
@@ -299,7 +294,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
     //获取某个日期的开始时间
     public static Date getDayStartTime(Date d) {
         Calendar calendar = Calendar.getInstance();
-        if(null != d) {
+        if (null != d) {
             calendar.setTime(d);
         }
         calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), 0, 0, 0);
@@ -308,10 +303,70 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
     }
 
     //获取本周的结束时间
-    public static Date getEndDayOfWeek(){
+    public static Date getEndDayOfWeek() {
         Calendar cal = Calendar.getInstance();
         cal.setTime(getBeginDayOfWeek());
         cal.add(Calendar.DAY_OF_WEEK, 6);
         return cal.getTime();
     }
+
+    /**
+     * 获取上一周
+     *
+     * @param date
+     * @return
+     */
+    public static DateDto getLastWeek(Date date) {
+        LocalDateTime localDateTime = date2LocalDateTime(date);
+        LocalDate localDate = localDateTime.toLocalDate();
+        LocalDateTime start = LocalDateTime.of(localDate.with(DayOfWeek.MONDAY), LocalTime.MIN).plusWeeks(-1);
+        LocalDateTime end = LocalDateTime.of(localDate.with(DayOfWeek.SUNDAY), LocalTime.MAX).plusWeeks(-1);
+        return new DateDto(localDateTime2Date(start), localDateTime2Date(end));
+    }
+
+    /**
+     * 获取上一个月
+     *
+     * @param date
+     * @return
+     */
+    public static DateDto getLastMonth(Date date) {
+        //获取上个月的第一天
+        Calendar start = Calendar.getInstance();
+        start.setTime(date);
+        start.add(Calendar.MONTH, -1);
+        //设置为1号
+        start.set(Calendar.DAY_OF_MONTH, 1);
+        start.set(Calendar.HOUR_OF_DAY, 0);
+        start.set(Calendar.MINUTE, 0);
+        start.set(Calendar.SECOND, 0);
+
+        //获取上个月的最后一天
+        Calendar end = Calendar.getInstance();
+        end.setTime(date);
+        //设置为1号,当前日期既为本月第一天
+        end.set(Calendar.DAY_OF_MONTH, 0);
+        end.set(Calendar.HOUR_OF_DAY, 23);
+        end.set(Calendar.MINUTE, 59);
+        end.set(Calendar.SECOND, 59);
+        return new DateDto(start.getTime(), end.getTime());
+    }
+
+    /**
+     * 获取两个日期相差天数， 多出时间天数加一
+     * @param startDate
+     * @param endDate
+     * @return
+     */
+    public static int daysBetween(Date startDate, Date endDate) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(startDate);
+        long start = calendar.getTimeInMillis();
+        calendar.setTime(endDate);
+        long end = calendar.getTimeInMillis();
+        long days = (end - start);
+        days = (int) Math.ceil(Double.parseDouble(String.valueOf(days)) / (1000 * 60 * 60 * 24));
+        return Integer.parseInt(String.valueOf(days));
+    }
+
 }

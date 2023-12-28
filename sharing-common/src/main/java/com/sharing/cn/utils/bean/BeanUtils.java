@@ -1,5 +1,6 @@
 package com.sharing.cn.utils.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,6 +17,15 @@ public class BeanUtils extends org.springframework.beans.BeanUtils {
             copyProperties(source, target);
             targetList.add(target);
         }
+    }
+
+    public static List<Object> copyPropertiesList(List<Object> sourceList, Object target) {
+        List<Object> targetList = new ArrayList<>();
+        for (Object source : sourceList) {
+            copyProperties(source, target);
+            targetList.add(target);
+        }
+        return targetList;
     }
 
     /**

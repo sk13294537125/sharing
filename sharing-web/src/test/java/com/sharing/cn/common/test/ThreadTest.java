@@ -1,7 +1,12 @@
 package com.sharing.cn.common.test;
 
 import com.alibaba.fastjson.JSON;
+import com.sharing.cn.common.dto.TaskExecutors;
+import com.sharing.cn.common.test.dto.RequestVo;
+import com.sharing.cn.common.test.dto.SkuLineDto;
+import lombok.Data;
 import org.junit.Test;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -159,7 +164,7 @@ public class ThreadTest {
     @Test
     public void latch1() throws InterruptedException {
         List<String> collect = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10000; i++) {
             collect.add(String.valueOf(i));
         }
         CountDownLatch latch = new CountDownLatch(collect.size());
@@ -244,5 +249,83 @@ public class ThreadTest {
         System.out.println(a);
         System.exit(1);
     }
+
+    @Test
+    public void test1() {
+        int i = Thread.activeCount();
+        System.out.println(i);
+    }
+
+    @Test
+    public void thread3() {
+        long l = System.currentTimeMillis();
+        List<com.sharing.cn.common.test.dto.RequestVo> req = new ArrayList<>();
+        List<SkuLineDto> list = new ArrayList<>();
+        List<Future<SkuLineDto>> futures = new ArrayList<>();
+        for (int i = 0; i < 15; i++) {
+            RequestVo vo = new RequestVo();
+            vo.setBussinessId(String.valueOf(i));
+            req.add(vo);
+        }
+
+        ThreadPoolTaskExecutor threadPoolTaskExecutor = TaskExecutors.getInstance().threadPoolTaskExecutor();
+        for (RequestVo requestVo : req) {
+            ConfigCallable configCallable = new ConfigCallable();
+            configCallable.setReq(requestVo);
+            Future<SkuLineDto> submit = threadPoolTaskExecutor.submit(configCallable);
+            futures.add(submit);
+        }
+        for (Future<SkuLineDto> future : futures) {
+            try {
+                list.add(future.get());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println(JSON.toJSONString(list));
+        long l1 = System.currentTimeMillis();
+        System.out.println(l1 - l);
+
+        long l2 = System.currentTimeMillis();
+        List<SkuLineDto> list1 = new ArrayList<>();
+        for (RequestVo requestVo : req) {
+            SkuLineDto skuLineDto = new SkuLineDto();
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            skuLineDto.setSkuId(requestVo.getBussinessId());
+            list1.add(skuLineDto);
+        }
+        System.out.println(JSON.toJSONString(list1));
+        long l3 = System.currentTimeMillis();
+        System.out.println(l3 - l2);
+    }
+
+    @Data
+    class ConfigCallable implements Callable<SkuLineDto> {
+
+        private com.sharing.cn.common.test.dto.RequestVo req;
+
+        @Override
+        public SkuLineDto call() throws Exception {
+            //List<SkuLineDto> list = new ArrayList<>();
+            //for (RequestVo requestVo : req) {
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                SkuLineDto skuLineDto = new SkuLineDto();
+                skuLineDto.setSkuId(req.getBussinessId());
+                return skuLineDto;
+                //list.add(skuLineDto);
+            //}
+            //return list;
+        }
+    }
+
 
 }

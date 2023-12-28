@@ -23,7 +23,7 @@ public class ExcelController {
 
     }
 
-
+    @RequestMapping("import")
     public void importFile() {
 
     }

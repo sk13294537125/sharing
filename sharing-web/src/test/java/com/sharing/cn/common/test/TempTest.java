@@ -3,6 +3,7 @@ package com.sharing.cn.common.test;
 import com.alibaba.fastjson.JSON;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import com.sharing.cn.common.test.dto.ClaimFeeInfoVo;
 import com.sharing.cn.common.test.dto.GlobalOcsData;
 import com.sharing.cn.common.test.dto.GlobalOcsResult;
 import com.sharing.cn.utils.GsonUtils;
@@ -122,13 +123,29 @@ public class TempTest {
     }
 
     @Test
-    public void tets5() {
+    public void test5() {
         String str1 = new String("a") + new String("bc");
         String str2 = str1.intern();
         System.out.println(str1 == str2);
         System.out.println(str1.equals(str2));
     }
 
+    @Test
+    public void test6() {
+        ClaimFeeInfoVo claimFeeInfoVo = new ClaimFeeInfoVo();
+        // 运费
+        BigDecimal freightAmount = new BigDecimal("0.00");
+        // 原始金额
+        BigDecimal originalAmount = new BigDecimal("0.00");
+
+        for (int i = 0; i < 10; i++) {
+            freightAmount = freightAmount.add(new BigDecimal(i));
+        }
+        claimFeeInfoVo.setFreightAmount(freightAmount);
+
+        System.out.println(JSON.toJSONString(claimFeeInfoVo));
+        System.out.println(claimFeeInfoVo.getOriginalAmount());
+    }
 
 
 }
