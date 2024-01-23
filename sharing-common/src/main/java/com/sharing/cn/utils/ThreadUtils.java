@@ -26,25 +26,7 @@ public class ThreadUtils {
      */
     @Test
     public void thread1() throws InterruptedException {
-        CountDownLatch latch = new CountDownLatch(20);
-        ExecutorService executorService = Executors.newFixedThreadPool(20);
-        try {
-            for (int i = 0; i <= 20; i ++) {
-                executorService.submit(() -> {
-                    int n = 0;
-                    System.out.println(n + ":" + SystemUtils.currentTimeMillis());
-                    ++n;
-                    latch.countDown();
-                });
-            }
-        } catch (Exception e) {
-            System.out.println("【地址查询】批量增加区域名称" + e);
-        } finally {
-            if (!executorService.isShutdown()) {
-                executorService.shutdown();
-            }
-        }
-        latch.await();
+
     }
 
     /**

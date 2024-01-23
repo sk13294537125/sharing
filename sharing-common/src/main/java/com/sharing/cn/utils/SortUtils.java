@@ -1,7 +1,5 @@
 package com.sharing.cn.utils;
 
-import java.util.List;
-
 /**
  * @author ext.shikai1
  */

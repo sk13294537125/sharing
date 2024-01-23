@@ -55,7 +55,7 @@ public class MybatisPlusGenerator {
     public static String projectName = "sharing";
 
     // 表名
-    public static String[] tableNameArray = {"base_data_backup"};
+    public static String[] tableNameArray = {"jk_enterprise_position","jk_enterprise_dept"};
 
     /**
      * 执行Mybatis生成器
@@ -92,7 +92,7 @@ public class MybatisPlusGenerator {
      */
     private static DataSourceConfig createDataSourceConfig() {
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
-        dataSourceConfig.setUrl("jdbc:mysql://127.0.0.1:3306/sharing?characterEncoding=utf-8&useUnicode=true&autoReconnect=true&connectTimeout=3000&initialTimeout=1&socketTimeout=5000&useSSL=false&serverTimezone=CTT");
+        dataSourceConfig.setUrl("jdbc:mysql://127.0.0.1:3306/ykt?characterEncoding=utf-8&useUnicode=true&autoReconnect=true&connectTimeout=3000&initialTimeout=1&socketTimeout=5000&useSSL=false&serverTimezone=CTT");
         dataSourceConfig.setDriverName("com.mysql.jdbc.Driver");
         dataSourceConfig.setUsername("root");
         dataSourceConfig.setPassword("root");

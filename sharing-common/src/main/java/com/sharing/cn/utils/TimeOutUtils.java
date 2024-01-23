@@ -6,8 +6,6 @@ import java.util.Date;
 /**
  * TimeOutUtils
  * 计算超时时间工具类
- *
- * @date 2022/10/11 19:38
  */
 public class TimeOutUtils {
     /**
@@ -66,14 +64,6 @@ public class TimeOutUtils {
             return false;
         }
         return true;
-        // mock
-        //if ("2022-09-26".equals(format)) { return true; }
-        //if ("2022-09-27".equals(format)) { return true; }
-        //if ("2022-09-28".equals(format)) { return true; }
-        //if ("2022-09-29".equals(format)) { return true; }
-        //if ("2022-09-30".equals(format)) { return true; }
-        //if ("2022-10-01".equals(format)) { return false; }
-        //return true;
     }
 
     public static void main(String[] args) {

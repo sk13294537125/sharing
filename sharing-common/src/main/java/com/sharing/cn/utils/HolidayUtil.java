@@ -33,15 +33,15 @@ public class HolidayUtil {
     public static void main(String[] args) {
         String jsonResult = HolidayUtil.queryHoliday(DateUtils.date2Str(new Date(), DateUtils.PATTERN_YYYYMMDD));
         // 0 上班 1周末 2节假日
-        if ("0".equals(jsonResult)) {
+        if (WORKDAY.equals(jsonResult)) {
             log.info("0上班日");
         }
 
-        if ("1".equals(jsonResult)) {
+        if (WEEKEND.equals(jsonResult)) {
             log.info("1周末");
         }
 
-        if ("2".equals(jsonResult)) {
+        if (HOLIDAYS.equals(jsonResult)) {
             log.info("2节假日");
         }
     }

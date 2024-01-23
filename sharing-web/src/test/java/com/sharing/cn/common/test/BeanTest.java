@@ -5,13 +5,15 @@ import com.sharing.cn.domain.bo.BaseDataBo;
 import com.sharing.cn.utils.bean.BeanUtils;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.nio.charset.StandardCharsets;
+import java.sql.Array;
+import java.util.*;
 
 /**
  * @author ext.shikai1
  */
 public class BeanTest {
+
 
     @Test
     public void copyTest() {
@@ -24,29 +26,16 @@ public class BeanTest {
 
         BeanUtils.copyProperties(source, target);
         System.out.println(JSON.toJSONString(target));
+
+        Vector<Object> objects = new Vector<>();
     }
 
+
     @Test
-    public void copyList() {
-        List<BaseDataBo> sourceList = new ArrayList<>();
-        BaseDataBo source1 = new BaseDataBo();
-        source1.setName("source1");
-        source1.setCode("source1");
-        sourceList.add(source1);
+    public void test() {
+        float f = 3.4f;
 
-        BaseDataBo source2 = new BaseDataBo();
-        source2.setCode("source2");
-        source1.setName("source2");
-        sourceList.add(source2);
 
-        BaseDataBo source3 = new BaseDataBo();
-        source3.setCode("source3");
-        source3.setName("source3");
-        sourceList.add(source3);
-
-        List<BaseDataBo> targetList = new ArrayList<>();
-
-        System.out.println(JSON.toJSONString(targetList));
     }
 
 }

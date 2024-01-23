@@ -1,4 +1,4 @@
-package com.sharing.cn.utils;
+package com.sharing.cn.utils.http;
 
 import org.junit.Test;
 
