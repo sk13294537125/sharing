@@ -31,12 +31,6 @@ public class BeanTest {
     }
 
 
-    @Test
-    public void test() {
-        float f = 3.4f;
-
-
-    }
 
     @Test
     public void equals() {

@@ -1,5 +1,6 @@
 package com.sharing.cn.utils.bean;
 
+import java.util.Collection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,50 @@ public class BeanUtils extends org.springframework.beans.BeanUtils {
         }
         return targetList;
     }
+
+    /**
+     * 实体类与VO对象列表的copy
+     * 转换后以源列表为主，默认为ArrayList
+     *
+     * @param source      数据源列表
+     * @param targetClass 目标列表中对象类Class
+     * @param <T>         目标列表类型
+     * @param <E>         数据源列表类型
+     * @return
+     */
+    public static<T, E> List<T> copyList(List<E> source, Class<T> targetClass) {
+        List<T> target;
+        try {
+            target = source.getClass().newInstance();
+            copyCollection(source, target, targetClass);
+            return target;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 复制集合
+     * @param source
+     * @param target
+     * @param targetClass
+     * @param <T>
+     * @param <S>
+     */
+    private static<T, S> void copyCollection(Collection<S> source, Collection<T> target, Class<T> targetClass) {
+        source.stream().forEach(item -> {
+            try {
+                T t;
+                t = targetClass.newInstance();
+                org.springframework.beans.BeanUtils.copyProperties(item, t);
+                target.add(t);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
 
     /**
      * 检查Bean方法名中的属性名是否相等。<br>

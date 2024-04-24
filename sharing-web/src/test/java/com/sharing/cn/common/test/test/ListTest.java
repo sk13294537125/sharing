@@ -3,6 +3,7 @@ package com.sharing.cn.common.test.test;
 
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
+import org.springframework.util.StopWatch;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -50,6 +51,9 @@ public class ListTest {
     }
 
     public static void main(String[] args) {
+        StopWatch stopWatch = new StopWatch("1");
+        stopWatch.start("start");
+        long l1 = System.nanoTime();
         List<Integer> list = new ArrayList<>();
         list.add(0);
         list.add(-1);
@@ -57,7 +61,8 @@ public class ListTest {
         list.add(2);
         list.add(3);
         list.add(4);
-
+stopWatch.stop();
+stopWatch.start("stream");
         Set<Integer> collect = list.stream()
                 .filter(l -> l > 0)
                 .collect(Collectors.toSet());
@@ -65,7 +70,13 @@ public class ListTest {
 
         List<Integer> list1 = new ArrayList<>(collect);
         Collections.reverse(list1);
+        stopWatch.stop();
         System.out.println(list1);
+
+        System.out.println(stopWatch.prettyPrint());
+        System.out.println(stopWatch.getTotalTimeMillis());
+        System.out.println("大额资金数据上报-上传、上报DB文件-定时任务-结束，耗时：{}ms" + (System.nanoTime() - l1) / 1000000);
+
     }
 
 

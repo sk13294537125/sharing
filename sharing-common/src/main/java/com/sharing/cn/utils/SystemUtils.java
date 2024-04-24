@@ -11,11 +11,6 @@ import java.util.ArrayList;
  */
 public class SystemUtils {
 
-    @Test
-    public void getProperty() {
-        String property = getProperty(SystemUtils.OS_VERSION);
-        System.out.println(property);
-    }
 
     // =================================== System.getProperty() 使用==========================================
     /**

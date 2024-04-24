@@ -55,7 +55,7 @@ public class MybatisPlusGenerator {
     public static String projectName = "sharing";
 
     // 表名
-    public static String[] tableNameArray = {"jk_enterprise_position","jk_enterprise_dept"};
+    public static String[] tableNameArray = {"jk_enterprise_user","jk_enterprise_user_position"};
 
     /**
      * 执行Mybatis生成器
