@@ -38,4 +38,26 @@ public class BeanTest {
 
     }
 
+    @Test
+    public void equals() {
+        BaseDataBo source = new BaseDataBo();
+        source.setName("name");
+        source.setCode("");
+
+        BaseDataBo target = new BaseDataBo();
+        source.setName("name");
+        source.setCode("");
+
+        boolean equals = source.equals(target);
+        System.out.println(equals);
+
+    }
+
+    @Test
+    public void test() {
+        String year = "2023";
+        boolean b = Integer.parseInt(year) >= 2023;
+        System.out.println(b);
+
+    }
 }

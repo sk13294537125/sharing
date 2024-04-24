@@ -181,14 +181,17 @@ public class SystemUtils {
 
     @Test
     public void arrayCopy() {
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            list.add(i);
-        }
-        Integer[] source = list.toArray(new Integer[]{});
-        Integer[] target = new Integer[]{11,12,13,14,15,16,17,18};
-        arrayReplace(source, 0, target, 1, 5);
-        System.out.println(JSONObject.toJSONString(target));
+        //ArrayList<Integer> list = new ArrayList<>();
+        //for (int i = 0; i < 10; i++) {
+        //    list.add(i);
+        //}
+        //Integer[] source = list.toArray(new Integer[]{});
+        //Integer[] target = new Integer[]{11,12,13,14,15,16,17,18};
+        //arrayReplace(source, 0, target, 1, 5);
+        //System.out.println(JSONObject.toJSONString(target));
+
+        String projectPath = SystemUtils.getProperty(SystemUtils.USER_DIR);
+        System.out.println(projectPath);
     }
 
 

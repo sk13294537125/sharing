@@ -2,27 +2,25 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <meta name=description content=程序员宝藏是一个专门为程序员量身定制的一站式导航站，让程序员的学习、工作、娱乐更加高效、便捷。>
-    <title>宝藏程序员</title>
+    <meta name=description content=专门为程序员量身定制的一站式导航站，让程序员的学习、工作、娱乐更加便捷。>
+    <title>宝藏</title>
     <!-- 避免IE使用兼容模式 -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link th:href="@{/static/img/favicon.png}" rel="shortcut icon"/>
-    <link th:href="@{/static/css/bootstrap.min.css}" rel="stylesheet"/>
-    <link th:href="@{/static/css/jquery.contextMenu.min.css}" rel="stylesheet"/>
-    <link th:href="@{/static/css/font-awesome.min.css}" rel="stylesheet"/>
-    <link th:href="@{/static/css/animate.min.css}" rel="stylesheet"/>
-    <link th:href="@{/static/css/style.css}" rel="stylesheet"/>
-    <link th:href="@{/static/css/skins.css}" rel="stylesheet"/>
+    <link href="/css/index.css" rel="stylesheet" type="text/css"/>
+    <script th:src="@{/js/jquery.min.js}"></script>
 </head>
 <body>
+<div>
+    <div id="headPanel">上</div>
+    <div id="leftPanel">左</div>
+    <div id="rightPanel">有</div>
+    <div id="footPanel" th:include="/common/foot :: common-foot"></div>
 
-<div id="headPanel"></div>
-<div id="footPanel"></div>
-<div id="leftPanel"></div>
-<div id="rightPanel"></div>
+</div>
+
 
 </body>
-<script  th:inline="javascript">
-    $("#headPanel").load("head");
+<script type="text/javascript">
+
 </script>
 </html>
