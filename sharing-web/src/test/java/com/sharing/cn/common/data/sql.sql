@@ -17,7 +17,7 @@ CREATE TABLE `tc_foreigner_reserve_order` (
                                               `channel_id` varchar(32) DEFAULT NULL COMMENT '渠道编号：app-eticket：APP',
                                               `deleted` varchar(2) DEFAULT NULL COMMENT '删除状态；0初始 1删除',
                                               `create_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-                                              `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP '修改时间',
+                                              `update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
                                               PRIMARY KEY (`id`),
                                               KEY `idx_customer_id` (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='外籍人-预约订单表';
