@@ -1,5 +1,5 @@
 spring:
   datasource:
-      url: jdbc:mysql://127.0.0.1:3306/sharing?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+      url: jdbc:mysql://127.0.0.1:3306/syzd?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
       username: root
       password: root

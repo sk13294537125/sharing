@@ -10,8 +10,10 @@ import com.sharing.cn.utils.GsonUtils;
 import org.junit.Test;
 import org.springframework.util.CollectionUtils;
 
+import java.lang.reflect.Array;
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -103,7 +105,7 @@ public class TempTest {
         String s = "{\"code\":\"SUCCESS\",\"reason\":\"\",\"data\":\"[{\\\"orderId\\\":255965025854,\\\"skuId\\\":10026490764747,\\\"num\\\":1,\\\"price\\\":499.000000,\\\"rePrice\\\":0.000000,\\\"discount\\\":110.000000,\\\"couponDiscount\\\":125.000000,\\\"baseFee\\\":0.000000,\\\"remoteAreasFee\\\":0.000000,\\\"shopFee\\\":0.000000,\\\"giftCardDiscount\\\":0.000000,\\\"moneyBalance\\\":0.000000,\\\"mobileDiscount\\\":0.000000,\\\"payMoney\\\":224.000000,\\\"energySubsidy\\\":0.000000,\\\"moneyOfSuit\\\":40.000000,\\\"promoId\\\":129889034845,\\\"skuType\\\":4,\\\"amountPayable\\\":224.000000,\\\"amountExpands\\\":[{\\\"orderId\\\":255965025854,\\\"skuId\\\":10026490764747,\\\"code\\\":\\\"385299310173\\\",\\\"type\\\":9,\\\"amount\\\":120.000000},{\\\"orderId\\\":255965025854,\\\"skuId\\\":10026490764747,\\\"code\\\":\\\"385299770701\\\",\\\"type\\\":6,\\\"amount\\\":5.000000},{\\\"orderId\\\":255965025854,\\\"skuId\\\":10026490764747,\\\"code\\\":\\\"61819222111313461301455\\\",\\\"type\\\":112,\\\"amount\\\":224.000000},{\\\"orderId\\\":255965025854,\\\"skuId\\\":10026490764747,\\\"code\\\":\\\"129893277953\\\",\\\"type\\\":202,\\\"amount\\\":110.000000},{\\\"orderId\\\":255965025854,\\\"skuId\\\":10026490764747,\\\"code\\\":\\\"100391\\\",\\\"type\\\":504,\\\"amount\\\":0.000000}],\\\"jiFenCount\\\":0,\\\"skuUuid\\\":\\\"1012_F2I3c3Q1148538098071052288\\\",\\\"currency\\\":\\\"CNY\\\",\\\"tenantId\\\":\\\"301\\\",\\\"country\\\":\\\"CN\\\",\\\"timeZone\\\":\\\"GMT+8\\\"}]\"}";
         GlobalOcsResult globalOcsResult = GsonUtils.fromJson(s, GlobalOcsResult.class);
         Gson gson = new Gson();
-        List<GlobalOcsData>  globalOcsDataList = gson.fromJson(globalOcsResult.getData(), new TypeToken<List<GlobalOcsData>>() {
+        List<GlobalOcsData> globalOcsDataList = gson.fromJson(globalOcsResult.getData(), new TypeToken<List<GlobalOcsData>>() {
         }.getType());
         Map<Long, List<GlobalOcsData>> listMap = globalOcsDataList.stream()
                 .collect(Collectors.groupingBy(GlobalOcsData::getSkuId));
@@ -147,5 +149,28 @@ public class TempTest {
         System.out.println(claimFeeInfoVo.getOriginalAmount());
     }
 
+    @Test
+    public void test7() {
+        int[] nums1 = {1,2,3,4,5,6,7};
+        rotate(nums1, 2);
+
+        System.out.println(Arrays.toString(nums1));
+    }
+
+    public void rotate(int[] nums, int k) {
+        if (0 == nums.length || 0 == k) {
+            return;
+        }
+        int[] nums1 = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            if (i <= k) {
+                nums1[i] = nums[i + k];
+            }
+            if (i > k) {
+                nums1[i] = nums[i - k];
+            }
+        }
+        nums = nums1;
+    }
 
 }

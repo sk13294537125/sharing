@@ -1,7 +1,7 @@
 package com.sharing.cn.utils.bean;
 
+import java.lang.reflect.Constructor;
 import java.util.Collection;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,23 +11,6 @@ public class BeanUtils extends org.springframework.beans.BeanUtils {
 
     /** Bean方法名中属性名开始的下标 */
     private static final int BEAN_METHOD_PROP_INDEX = 3;
-
-    public static void copyPropertiesList(List<Object> sourceList, List<Object> targetList) {
-        for (Object source : sourceList) {
-            Object target = new Object();
-            copyProperties(source, target);
-            targetList.add(target);
-        }
-    }
-
-    public static List<Object> copyPropertiesList(List<Object> sourceList, Object target) {
-        List<Object> targetList = new ArrayList<>();
-        for (Object source : sourceList) {
-            copyProperties(source, target);
-            targetList.add(target);
-        }
-        return targetList;
-    }
 
     /**
      * 实体类与VO对象列表的copy
@@ -42,7 +25,9 @@ public class BeanUtils extends org.springframework.beans.BeanUtils {
     public static<T, E> List<T> copyList(List<E> source, Class<T> targetClass) {
         List<T> target;
         try {
-            target = source.getClass().newInstance();
+            Constructor<? extends List> declaredConstructor = source.getClass().getDeclaredConstructor();
+            declaredConstructor.setAccessible(true);
+            target = declaredConstructor.newInstance();
             copyCollection(source, target, targetClass);
             return target;
         } catch (Exception e) {
@@ -59,7 +44,7 @@ public class BeanUtils extends org.springframework.beans.BeanUtils {
      * @param <T>
      * @param <S>
      */
-    private static<T, S> void copyCollection(Collection<S> source, Collection<T> target, Class<T> targetClass) {
+    public static<T, S> void copyCollection(Collection<S> source, Collection<T> target, Class<T> targetClass) {
         source.stream().forEach(item -> {
             try {
                 T t;

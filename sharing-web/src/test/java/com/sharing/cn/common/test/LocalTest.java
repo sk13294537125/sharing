@@ -7,7 +7,9 @@ import com.sharing.cn.common.dto.tianyan.VerifyResult;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LocalTest {
 
@@ -246,4 +248,39 @@ public class LocalTest {
                 "}\n" +
                 "}";
     }
+
+    public static void main(String[] args) {
+        int[][] img = {{1,1,1},{1,0,1}, {1,1,1}};
+        int[][] img1 = {{100,200,100},{200,50,200}, {100,200,100}};
+        int[][] ints = imageSmoother(img);
+
+        Arrays.stream(ints).forEach(row -> {
+            String rowStr = Arrays.stream(row).mapToObj(String::valueOf).collect(Collectors.joining(", "));
+            System.out.println(rowStr);
+        });
+    }
+
+
+    public static int[][] imageSmoother(int[][] img) {
+        int m = img.length, n = img[0].length;
+        int[][] ret = new int[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                int num = 0, sum = 0;
+                for (int x = i - 1; x <= i + 1; x++) {
+                    for (int y = j - 1; y <= j + 1; y++) {
+                        if (x >= 0 && x < m && y >= 0 && y < n) {
+                            num++;
+                            System.out.println("num:" + num);
+                            sum += img[x][y];
+                            System.out.println("sum:" + sum);
+                        }
+                    }
+                }
+                ret[i][j] = sum / num;
+            }
+        }
+        return ret;
+    }
+
 }

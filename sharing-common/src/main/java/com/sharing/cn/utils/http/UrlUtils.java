@@ -1,7 +1,6 @@
 package com.sharing.cn.utils.http;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.sharing.cn.utils.DateUtils;
 import lombok.SneakyThrows;
@@ -10,8 +9,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.thymeleaf.util.MapUtils;
 
 import java.beans.PropertyDescriptor;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
