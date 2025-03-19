@@ -41,15 +41,13 @@ public class RandomTest {
     }
 
     @Test
-    public void meal() {
-        String[] arr = new String[]{"1", "2", "3"};
+    public void lunch() {
+        String[] arr = {"牛肉面", "焖面", "麻辣烫", "和合谷", "汉堡", "米线"};
+        // 创建 Random 对象
         Random random = new Random();
-        int index = random.nextInt(arr.length);
-        String selectedFood = arr[index];
-        System.out.println(selectedFood);
-
+        // 生成指定范围内的随机整数
+        System.out.println(arr[random.nextInt(arr.length)]);
     }
-
 
 
 

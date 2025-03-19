@@ -23,7 +23,7 @@ public class Test1 {
         // 密钥（配置文件中）
         handler.setSecret("efe86adbbcbcd7e0114ae7ff59fed750");
         // 解密
-        String enStr = "MfB9m6IWOKxRqb+cdWQghkqsQCvMqkg1HUCSYkHOqqBE/BRDPNAcWDJXUnWyFCisFcUsFgnYAFQrQRqNi2OZTshEJd44ewCVATMt0L4FB7QcUzzITb7omm6W0t3ws7/tkRSaXsIymJXIgNJRRdCcY3FDa294SnL0ZeHAbdglmcBKI6NJbKZM6jj4nR75RgUNEVWMl3lTlVsAP06HmHwGNw==";
+        String enStr = "/K5oGk6mrkEshHoUL+O2EjIvsIw2xPvziCdnG5qowwLe7/XUNCy97bX5L2HuU1i54OqXuWQMN42IeGvzHdnVdm0ut5nQTzZFGMbmNxU/qTA=";
         byte[] decode = handler.decode(enStr.getBytes());
         String urlDecodeStr = URLDecoder.decode(new String(decode), "UTF-8");
         System.out.println(urlDecodeStr);
@@ -39,10 +39,7 @@ public class Test1 {
         // 密钥（配置文件中）
         handler.setSecret("efe86adbbcbcd7e0114ae7ff59fed750");
 
-        String orderList = "{\n" +
-                "  \"orderId\":\"17321533350086\",\n" +
-                "  \"subOrderId\":[\"173215333502667628\"]\n" +
-                "}";
+        String orderList = "{\"password\":\"JQmWIjbDS53sCBWD^hBtGhxH\",\"otpCode\":\"554137\",\"account\":\"shikai\"}\n";
 
         // 加密
         JSONObject jsonObject = JSON.parseObject(orderList);
@@ -80,15 +77,15 @@ public class Test1 {
 
         AES256TextEncryptor textEncryptor = new AES256TextEncryptor();
         //加解密使用的秘钥，项目部署时需要配置到启动脚本或者环境变量
-        textEncryptor.setPassword("bmac1234");
+//        String jasyptKey = "Bt%XJ^n1j8mz";
+        String jasyptKey = "KS$T3Eon9uaC@P4SErwS7F5f";// 三重一大生产
+        textEncryptor.setPassword(jasyptKey);
         //要加密的数据（数据库的用户名或密码）
-        String username = textEncryptor.encrypt("pay");
-        String password = textEncryptor.encrypt("12345678");
-        System.out.println("加密后的username:"+username);
-        System.out.println("加密后的password:"+password);
-        String s = "knpKV6fQgsVFKYmE2g4y6s89P/H/zp5QGzcy3P5wwgSWSNZuw6HXXYhbJYt5XuVf";
+        String key = textEncryptor.encrypt("cb1eb5b01bac6ae7f30f14a05e86598b2812486e2ea2137ea4cadda6d8fb3f0a");
+        System.out.println("加密后的:" + key);
+        String s = "HgSQTmOIE+VwqOxP8W75ll04NW8QMkmIYIfInP5zXk2+nzI8duZjz5aqL0qYhSbCm1pfnCjT0KgCWfe3C4EhxQ==";
         String decrypt = textEncryptor.decrypt(s);
-        System.out.println(decrypt);
+        System.out.println("解密后的:" + decrypt);
     }
 
     /**
@@ -106,13 +103,6 @@ public class Test1 {
 
     }
 
-
-    public static void main(String[] args) {
-        String begin = "12:00";
-        String substring = begin.substring(0, 2);
-        System.out.println(substring);
-
-    }
 
 
 }

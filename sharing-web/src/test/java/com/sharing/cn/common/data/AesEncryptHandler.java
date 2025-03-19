@@ -22,48 +22,29 @@ public class AesEncryptHandler {
 
     public byte[] encode(byte[] b) {
         try {
-//			KeyGenerator keygen = KeyGenerator.getInstance("AES");
-//			keygen.init(128, new SecureRandom(secret.getBytes()));
-//			SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG" );
-//			secureRandom.setSeed(secret.getBytes());
-//			keygen.init(128, secureRandom);
             IvParameterSpec zeroIv = new IvParameterSpec(VIPARA.getBytes());
             SecretKeySpec key = new SecretKeySpec(secret.getBytes(), KEY_ALGORITHM);
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
             cipher.init(Cipher.ENCRYPT_MODE, key, zeroIv);
-//			SecretKey original_key = keygen.generateKey();
-//			byte[] raw = original_key.getEncoded();
-//			SecretKey key = new SecretKeySpec(raw, "AES");
-//			Cipher cipher = Cipher.getInstance("AES");
-//			cipher.init(Cipher.ENCRYPT_MODE, key);
             byte[] byte_AES = cipher.doFinal(b);
             return Base64Utils.encode(byte_AES);
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return new byte[0];
     }
 
     public byte[] decode(byte[] b) {
         try {
-//			KeyGenerator keygen = KeyGenerator.getInstance("AES");
-//			keygen.init(128, new SecureRandom(secret.getBytes()));
-//			SecureRandom secureRandom = SecureRandom.getInstance("SHA1PRNG" );
-//			secureRandom.setSeed(secret.getBytes());
-//			keygen.init(128, secureRandom);
-//			SecretKey original_key = keygen.generateKey();
-//			byte[] raw = original_key.getEncoded();
-//			SecretKey key = new SecretKeySpec(raw, "AES");
             IvParameterSpec zeroIv = new IvParameterSpec(VIPARA.getBytes());
             SecretKeySpec key = new SecretKeySpec(secret.getBytes(), KEY_ALGORITHM);
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
             cipher.init(Cipher.DECRYPT_MODE, key, zeroIv);
-
-//			Cipher cipher = Cipher.getInstance("AES");
-//			cipher.init(Cipher.DECRYPT_MODE, key);
             byte[] byte_content = Base64Utils.decode(b);
             byte[] byte_decode = cipher.doFinal(byte_content);
             return byte_decode;
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return new byte[0];
     }

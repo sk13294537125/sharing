@@ -14,13 +14,6 @@ public class JsonTest {
 
     @Test
     public void parse() {
-        List<SkuInfoDto> skuInfoDtos = new ArrayList<>();
-        SkuLineDto skuLineDto = new SkuLineDto();
-        skuLineDto.setSkuId("100030377517");
-        SkuInfoDto skuInfoDto = new SkuInfoDto();
-        skuInfoDto.setSkuLineDto(skuLineDto);
-        skuInfoDto.setSkuNum(1);
-        skuInfoDtos.add(skuInfoDto);
-        System.out.println(JSON.toJSONString(skuInfoDtos));
+
     }
 }
