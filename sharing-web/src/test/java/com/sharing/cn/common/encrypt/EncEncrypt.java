@@ -1,4 +1,4 @@
-package com.sharing.cn.common.data;
+package com.sharing.cn.common.encrypt;
 
 
 import com.alibaba.fastjson.JSON;
@@ -10,12 +10,14 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author wangwei
  * @version 2024/1/12
  */
-public class Test1 {
+public class EncEncrypt {
 
     @Test
     public void deco() throws UnsupportedEncodingException, ParseException {
@@ -56,37 +58,31 @@ public class Test1 {
      */
     @Test
     public void enc() {
-//        AES256TextEncryptor textEncryptor = new AES256TextEncryptor();
-//        //加解密使用的秘钥，项目部署时需要配置到启动脚本或者环境变量
-//        textEncryptor.setPassword("PKHf6VjaX2ln8TG14EIBuy59");
-////        textEncryptor.setPassword("KS$T3Eon9uaC@P4SErwS7F5f");
-//        //要加密的数据（数据库的用户名或密码）
-//        String username = textEncryptor.encrypt("vXLEyUR2$BwSt&gawpeA%7AY");
-//        String password = textEncryptor.encrypt("bmacapi");
-//        String password1 = textEncryptor.encrypt("jH|9D-RxUBAaU+rXjqnFw");
-//        System.out.println("加密后的username:"+username);
-//        System.out.println("加密后的password:"+password);
-//        System.out.println("加密后的password:"+password1);
-//        String s = "5fjQ/ZpcIuVlSOdFLNmxcXNUh6iMDs9MNiK1jqJG/xN/uMksvsNTyKc9x9iL+NI2";
-////        String s1 = "knpKV6fQgsVFKYmE2g4y6s89P/H/zp5QGzcy3P5wwgSWSNZuw6HXXYhbJYt5XuVf";
-//        String decrypt = textEncryptor.decrypt(s);
-////        String decrypt1 = textEncryptor.decrypt(s1);
-//        System.out.println(decrypt);
-////        System.out.println(decrypt1);
 
 
         AES256TextEncryptor textEncryptor = new AES256TextEncryptor();
         //加解密使用的秘钥，项目部署时需要配置到启动脚本或者环境变量
-//        String jasyptKey = "Bt%XJ^n1j8mz";
+        // 启动脚本配置 -Djasypt.encryptor.password=Bt%XJ^n1j8mz
+//        String jasyptKey = "Bt%XJ^n1j8mz"; // wolf-生产
+//        String jasyptKey = "Bt%XJ^n1j8mz"; // wolf-测试环境
+//        String jasyptKey = "Bt%XJ^81ngjmz"; // 商户管理平台测试环境
+//        String jasyptKey = "BJX&t^18ngjmz"; // 商户管理平台-生产
+//        String jasyptKey = "KS$T3Eon9uaC@P4SErwS7F5f"; // 天机-测试环境
+//        String jasyptKey = "KS$T3Eon9uaC@P4SErwS7F5f"; // 天机-生产
         String jasyptKey = "KS$T3Eon9uaC@P4SErwS7F5f";// 三重一大生产
+//        String jasyptKey = "KS$T3Eon9uaC@P4SErwS7F5f";// 三重一大测试环境
         textEncryptor.setPassword(jasyptKey);
         //要加密的数据（数据库的用户名或密码）
-        String key = textEncryptor.encrypt("cb1eb5b01bac6ae7f30f14a05e86598b2812486e2ea2137ea4cadda6d8fb3f0a");
+//        String key = textEncryptor.encrypt("Bfhg@2018@2025");
+        String key = textEncryptor.encrypt("68bbf2f6bf72019c069bffc369afb0366d9a67e38a47f2db0a2c7b63d3fb5509");
         System.out.println("加密后的:" + key);
-        String s = "HgSQTmOIE+VwqOxP8W75ll04NW8QMkmIYIfInP5zXk2+nzI8duZjz5aqL0qYhSbCm1pfnCjT0KgCWfe3C4EhxQ==";
+        String s = "5AT27c5NYzUXcCUrYNYU+nQ6GQM+bH/2PmIagSr4BIUT2zzWwKPubyp9t7a/p3bsdYrA0ejxAWksXCgK3QSTlmUp5KBz0PJ0D9FFjU3H+V8=";
         String decrypt = textEncryptor.decrypt(s);
         System.out.println("解密后的:" + decrypt);
+
+        // 三重一大 encrypt.sm4Key：E99567ACC5364D69BA0B0BC83066955F
     }
+
 
     /**
      * 天机加密

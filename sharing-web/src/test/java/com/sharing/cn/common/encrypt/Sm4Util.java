@@ -1,4 +1,4 @@
-package com.sharing.cn.common.data;
+package com.sharing.cn.common.encrypt;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.pqc.math.linearalgebra.ByteUtils;
@@ -7,7 +7,6 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.security.Key;
 import java.security.Security;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**

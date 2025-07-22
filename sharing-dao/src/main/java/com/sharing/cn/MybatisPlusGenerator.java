@@ -95,7 +95,7 @@ public class MybatisPlusGenerator {
         dataSourceConfig.setUrl("jdbc:mysql://127.0.0.1:3306/ykt?characterEncoding=utf-8&useUnicode=true&autoReconnect=true&connectTimeout=3000&initialTimeout=1&socketTimeout=5000&useSSL=false&serverTimezone=CTT");
         dataSourceConfig.setDriverName("com.mysql.jdbc.Driver");
         dataSourceConfig.setUsername("root");
-        dataSourceConfig.setPassword("root");
+        dataSourceConfig.setPassword("12345678");
         return dataSourceConfig;
     }
 

@@ -1,4 +1,4 @@
-package com.sharing.cn.common.data;
+package com.sharing.cn.common.encrypt;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

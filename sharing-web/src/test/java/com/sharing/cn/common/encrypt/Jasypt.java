@@ -1,4 +1,4 @@
-package com.sharing.cn.common.data;
+package com.sharing.cn.common.encrypt;
 
 import org.apache.commons.lang3.StringUtils;
 import org.jasypt.util.text.AES256TextEncryptor;

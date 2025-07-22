@@ -1,4 +1,4 @@
-package com.sharing.cn.common.data;
+package com.sharing.cn.common.encrypt;
 
 import org.springframework.util.Base64Utils;
 

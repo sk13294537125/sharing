@@ -1,4 +1,4 @@
-package com.sharing.cn.common.data;
+package com.sharing.cn.common.encrypt;
 
 import com.antherd.smcrypto.sm2.Sm2;
 import com.antherd.smcrypto.sm3.Sm3;
