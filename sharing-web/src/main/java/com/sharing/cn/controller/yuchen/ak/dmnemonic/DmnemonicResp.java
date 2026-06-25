@@ -1,4 +1,4 @@
-package com.sharing.cn.controller.ak.yuchen.dmnemonic;
+package com.sharing.cn.controller.yuchen.ak.dmnemonic;
 
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.sharing.cn.controller.ak.yuchen;
+package com.sharing.cn.utils.http;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,7 +11,6 @@ import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.util.EntityUtils;
 
 import javax.net.ssl.SSLContext;
@@ -23,6 +22,9 @@ import java.security.cert.X509Certificate;
 import java.util.Map;
 import java.util.StringJoiner;
 
+/**
+ * 绕过JDK证书
+ */
 public class HttpFormUtil {
      private static final String UTF8 = "UTF-8";
      private static final String FORM_CONTENT_TYPE = "application/x-www-form-urlencoded;charset=UTF-8";

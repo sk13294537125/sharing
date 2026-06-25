@@ -21,7 +21,6 @@ public class InitBaseData {
 
     @PostConstruct
     public void init(){
-        List<BaseDataBo> all = baseDataService.findByCode(null);
 
     }
 }

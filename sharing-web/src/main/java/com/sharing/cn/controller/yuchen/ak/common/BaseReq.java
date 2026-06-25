@@ -1,4 +1,4 @@
-package com.sharing.cn.controller.ak.yuchen.common;
+package com.sharing.cn.controller.yuchen.ak.common;
 
 import lombok.Data;
 

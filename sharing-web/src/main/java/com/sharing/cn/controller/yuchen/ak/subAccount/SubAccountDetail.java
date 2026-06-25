@@ -1,4 +1,4 @@
-package com.sharing.cn.controller.ak.yuchen.subAccount;
+package com.sharing.cn.controller.yuchen.ak.subAccount;
 
 import lombok.Data;
 

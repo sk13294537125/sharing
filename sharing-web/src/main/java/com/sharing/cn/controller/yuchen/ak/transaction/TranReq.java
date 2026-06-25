@@ -1,6 +1,6 @@
-package com.sharing.cn.controller.ak.yuchen.transaction;
+package com.sharing.cn.controller.yuchen.ak.transaction;
 
-import com.sharing.cn.controller.ak.yuchen.common.BaseReq;
+import com.sharing.cn.controller.yuchen.ak.common.BaseReq;
 import lombok.Data;
 
 @Data
