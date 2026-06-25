@@ -1,0 +1,15 @@
+# 三重一大
+京仓数据库：10.3.123.11:54321
+username：bmac_jk
+password：h5fyrS#WxQOTb9CNXxR2-HRf
+
+redis：10.3.123.12:6379
+password：CnWlrfsu0b4GFMQcYEg%stV6
+
+#P+R停车场
+mysql 数据库：
+username：
+password：
+
+redis：
+password：

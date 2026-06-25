@@ -4,6 +4,7 @@ import com.sharing.cn.domain.bo.BaseDataBo;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -50,18 +51,40 @@ public class ObjectUtils {
     }
 
 
-    public static Map<String, Object> toMap(Object obj) throws IllegalAccessException {
+    public static Map<String, Object> toMap(Object obj){
         Map<String, Object> map = new HashMap<>();
         Class<?> clazz = obj.getClass();
         for (Field field : clazz.getDeclaredFields()) {
             field.setAccessible(true); // 使得私有字段也可以访问
-            Object o = field.get(obj);
-            if (!objectCheckIsNull(o)) {
+             Object o = null;
+             try {
+                  o = field.get(obj);
+             } catch (IllegalAccessException e) {
+                  e.printStackTrace();
+             }
+             if (!objectCheckIsNull(o)) {
                 map.put(field.getName(), o);
             }
         }
         return map;
     }
+
+     public static Map<String, Object> toMapIncludingSuper(Object obj) {
+          Map<String, Object> map = new LinkedHashMap<>();
+          Class<?> cls = obj.getClass();
+          while (cls != Object.class) {
+               for (Field f : cls.getDeclaredFields()) {
+                    f.setAccessible(true);
+                    try {
+                         if (!objectCheckIsNull(f)) {
+                              map.put(f.getName(), f.get(obj));
+                         }
+                    } catch (IllegalAccessException ignored) {}
+               }
+               cls = cls.getSuperclass();
+          }
+          return map;
+     }
 
     public static void main(String[] args) throws Exception {
         BaseDataBo baseDataBo = new BaseDataBo();

@@ -2,7 +2,7 @@ package com.sharing.cn.utils;
 
 import java.io.UnsupportedEncodingException;
 
-public class Base64 {
+public class Base64Util {
 
 	// Constants and variables
 	// -------------------------------------------------------------------------
@@ -68,7 +68,7 @@ public class Base64 {
 	// -------------------------------------------------------------------------
 
 	/** Trivial private ctor to enfore Singleton pattern. */
-    public Base64() {
+    public Base64Util() {
 		super();
 	}
 

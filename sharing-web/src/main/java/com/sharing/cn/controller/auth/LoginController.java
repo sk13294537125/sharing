@@ -1,4 +1,4 @@
-package com.sharing.cn.controller;
+package com.sharing.cn.controller.auth;
 
 /**
  * @author ext.shikai1

@@ -112,8 +112,13 @@ public class Sm4Util {
     public static void main(String[] args) {
         try {
             // 自定义的32位16进制密钥
-            String key = "86C63180C2806ED1F47B859DE501215B";
-            String s = Sm4Util.encryptEcb(key, "13801200833");
+            String key = "9BC292B126464EB251258E16D2DE80C3";
+            String s = Sm4Util.encryptEcb(key, "{\n" +
+                    "    \"account\":\"123\",\n" +
+                    "    \"password\":\"123\",\n" +
+                    "    \"validCode\":\"111\",\n" +
+                    "    \"validCodeReqNo\":\"111\"\n" +
+                    "}");
             System.out.println("en:" + s);
             s = Sm4Util.decryptEcb(key, "2d96c392289801ac2092ec4f587e920c");
             System.out.println("de:" + s);

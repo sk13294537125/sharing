@@ -55,7 +55,7 @@ public class MybatisPlusGenerator {
     public static String projectName = "sharing";
 
     // 表名
-    public static String[] tableNameArray = {"jk_enterprise_user","jk_enterprise_user_position"};
+    public static String[] tableNameArray = {"p_par_park_risk"};
 
     /**
      * 执行Mybatis生成器
@@ -92,8 +92,8 @@ public class MybatisPlusGenerator {
      */
     private static DataSourceConfig createDataSourceConfig() {
         DataSourceConfig dataSourceConfig = new DataSourceConfig();
-        dataSourceConfig.setUrl("jdbc:mysql://127.0.0.1:3306/ykt?characterEncoding=utf-8&useUnicode=true&autoReconnect=true&connectTimeout=3000&initialTimeout=1&socketTimeout=5000&useSSL=false&serverTimezone=CTT");
-        dataSourceConfig.setDriverName("com.mysql.jdbc.Driver");
+        dataSourceConfig.setUrl("jdbc:mysql://127.0.0.1:3306/wolf_cloud?useSSL=false&serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8");
+        dataSourceConfig.setDriverName("com.mysql.cj.jdbc.Driver");
         dataSourceConfig.setUsername("root");
         dataSourceConfig.setPassword("12345678");
         return dataSourceConfig;
@@ -132,6 +132,7 @@ public class MybatisPlusGenerator {
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setEntityColumnConstant(true);
         strategy.setTablePrefix(moduleName + "_");
+        strategy.setEntityTableFieldAnnotationEnable(true);
         return strategy;
     }
 

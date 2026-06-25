@@ -1,4 +1,4 @@
-package com.sharing.cn.controller;
+package com.sharing.cn.controller.auth;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

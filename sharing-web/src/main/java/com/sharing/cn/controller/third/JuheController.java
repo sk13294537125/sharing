@@ -1,4 +1,4 @@
-package com.sharing.cn.controller;
+package com.sharing.cn.controller.third;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
